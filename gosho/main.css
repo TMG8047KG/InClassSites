@@ -9,21 +9,36 @@ body{
 }
 
 .tempi{
-    position: absolute;
+    z-index: 1000;
+    position: fixed;
     bottom: 0;
     right: 0;
+    padding: 10px;
+    margin: 10px;
+}
+
+.tempi a{
+    background: white;
+    color: rgb(255, 123, 0);
+    border-radius: 20px;
+    padding: 10px;
+    text-decoration: none;
 }
 
 .content{
+    width: 100%;
     display: inline-flex;
+    align-items: stretch;
 }
 
 .s1{
-    background: rgb(192, 255, 233);
+    width: 50%;
+    background: #058A40;
 }
 
 .s2{
-    background: rgb(124, 218, 255);
+    width: 50%;
+    background: #f2c14e;
 }
 
 p{
@@ -35,42 +50,50 @@ p{
     align-self: center;
     text-align: center;
     padding: 5px;
-    background: rgba(108, 255, 204, 0.400);
+    background: #06b153;
     border-radius: 5px;
 }
 
 .hat h1{
     margin: 0;
+    color: 04622e;
 }
 
 .hat{
     display: block;
-    background: rgb(133, 255, 192);
+    background: #047638;
     padding: 2rem;
 }
 
 .scol h3{
     text-align: start;
-    color: rgb(14, 212, 140);
+    color: #04622e;
 }
 
 .scol ul{
     list-style: none;
-    padding: 5px;
+    padding: 0px 0px 5px 0px;
     margin: 0;
 }
 
 .scol p{
     padding: 0px 0px 0px 5px;
+    text-align: start;
 }
 
 .scol li{
     display: flex;
-    background: rgba(225, 255, 251, 0.9);
+    background: #07c55d;
     padding: 5px;
     margin: 5px 0px 5px 0px;
     border-radius: 5px;
+    transition: transform 0.3s;
 }
+
+.scol li:hover{
+    transform: scale(1.1,1.1);
+}
+
 
 .scol{
     padding: 0px 6rem 0px 6rem;
@@ -82,40 +105,59 @@ p{
 
 .pat{
     display: block;
-    background: rgb(24, 201, 255);
+    background: #efb52e;
     padding: 2rem;
+}
+
+.subcat h2{
+    margin: 0;
+}
+
+.subcat{
+    display: block;
+    background: #efb52e;
+    padding: 1rem;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .cssos code{
     align-self: center;
     text-align: center;
     padding: 5px;
-    background: rgba(108, 167, 255, 0.4);
+    background: #e4a511;
     border-radius: 5px;
 }
 
 .cssos h3{
     text-align: start;
-    color: rgb(14, 133, 212);
+    color: #D19710;
 }
 
 .cssos ul{
     list-style: none;
-    padding: 0;
+    padding: 0px 0px 5px 0px;
     margin: 0;
 }
 
 .cssos p{
     padding: 0px 0px 0px 5px;
+    text-align: start;
 }
 
 .cssos li{
     display: flex;
-    background: rgba(133, 208, 252, 0.9);
+    background: #f1bc41;
     padding: 5px;
     margin: 5px 0px 5px 0px;
     border-radius: 5px;
+    transition: transform 0.3s;
 }
+
+.cssos li:hover{
+    transform: scale(1.1,1.1);
+}
+
 
 .cssos{
     padding: 0px 6rem 0px 6rem;
@@ -124,5 +166,11 @@ p{
 @media only screen and (max-width: 1100px) {
     .content{
         display: block;
+    }
+    .s1{
+        width: 100%;
+    }
+    .s2{
+        width: 100%;
     }
 }
