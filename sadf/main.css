@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0;
+    background: pink;
+}
+
+
+.cons{
+    position: relative;
+}
+
+button{
+   display: none;
+   z-index: 100;
+}
+
+button:hover{
+    background:rgb(127, 57, 160);
+}
+
+nav{
+    display: flex;
+    background: rgb(81, 33, 104);
+    position: fixed;
+    width: 100%;
+    padding: 5px;
+    justify-content: center;
+}
+
+nav a{
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    color: orange;
+    background: rgb(104, 42, 133);
+    border-radius: 15px;
+    margin: 0px 3px 0px 3px;
+    transition: background 0.6s;
+}
+
+nav a:hover{
+    background: rgb(127, 57, 160);
+}
+
+.content{
+    text-align: center;
+    margin-right: 158px;
+}
+
+@media only screen and (max-width: 1100px) {
+    nav{
+        width: 8rem;
+        right: 0;
+        align-items: center;
+        height: 100vh;
+        flex-flow: column;
+        padding: 20px;
+    }
+    nav a{
+        width: 100%;
+        margin:3px 0px 3px 0px ;
+    }
+    button{
+        display: block;
+        position: fixed;
+        right: 0;
+        top:0;
+        color: #000;
+        background:rgb(104, 42, 133);
+        border: 0;
+        border-radius: 5px;
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        padding: 10px;
+    }
+}
