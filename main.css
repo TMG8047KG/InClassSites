@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /* styles.css */
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.336);
     color: white;
     background: radial-gradient(circle, rgba(10,10,30,1) 0%, rgba(0,0,15,1) 100%);
 }
 
-/* Space background setup */
 .space-background {
     position: relative;
     min-width: 100vw;
@@ -16,7 +20,7 @@ body {
     overflow: visible;
 }
 
-/* Planet styling with random sizes, colors, and shadow */
+/* Planet styling with gradient, texture, and shadow */
 .planet {
     position: absolute;
     border-radius: 50%;
@@ -25,10 +29,65 @@ body {
     font-size: 1rem;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.6));
+    z-index: 100;
 }
 
-/* Hover effect */
+/* Planet ring, conditional based on random selection */
+.planet.has-ring::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    top: -25%;
+    left: -25%;
+    transform: rotate(45deg);
+    pointer-events: none;
+    transition: transform 0.5s ease;
+}
+
+/* Hover effect with scale and shadow */
 .planet:hover {
     transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
+
+.planet:hover.has-ring::before {
+    transform: rotate(60deg); /* Rotate the ring slightly on hover */
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.planet.animate-float {
+    animation: float 3s ease-in-out infinite alternate;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}
+.star {
+    animation: twinkle 2s infinite;
+}
+
+

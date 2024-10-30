@@ -1,41 +1,82 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
     const planets = document.querySelectorAll(".planet");
-    const rowGap = 220;  // Adjust row gap for even spacing
+    const spaceBackground = document.querySelector(".space-background");
+    const rowGap = 220;
 
-    // Array of colors to randomly assign to planets
-    const planetColors = ["#4a90e2", "#f39c12", "#27ae60", "#8e44ad", "#e74c3c", "#3498db", "#2ecc71", "#f1c40f", "#9b59b6"];
+    const planetColors = [
+        ["#4a90e2", "#1f3f7a"],
+        ["#f39c12", "#d35400"],
+        ["#27ae60", "#145a32"],
+        ["#8e44ad", "#5b2c6f"],
+        ["#e74c3c", "#c0392b"],
+        ["#3498db", "#2980b9"],
+        ["#2ecc71", "#27ae60"],
+        ["#f1c40f", "#f39c12"],
+        ["#9b59b6", "#8e44ad"]
+    ];
 
     planets.forEach((planet, index) => {
-        // Set random color and size for each planet
-        const randomColor = planetColors[Math.floor(Math.random() * planetColors.length)];
-        const randomSize = Math.floor(Math.random() * 80) + 120; // Random size between 50px and 100px
-        planet.style.backgroundColor = randomColor;
+        const [color1, color2] = planetColors[Math.floor(Math.random() * planetColors.length)];
+        const randomSize = Math.floor(Math.random() * 80) + 120;
+
+        planet.style.background = `radial-gradient(circle at 20% 20%, ${color1}, ${color2})`;
         planet.style.width = `${randomSize}px`;
         planet.style.height = `${randomSize}px`;
-        planet.style.lineHeight = `${randomSize}px`; // Center text in the circle
+        planet.style.lineHeight = `${randomSize}px`;
 
-        // Calculate random y-position per row and x-offset within viewport
         const yPosition = index * rowGap + Math.floor(Math.random() * rowGap / 2);
         const maxXOffset = window.innerWidth - randomSize;
         const xOffset = Math.random() * maxXOffset;
 
-        // Apply randomized positioning to each planet
-        planet.style.transform = `translate(${xOffset}px, ${yPosition}px)`;
+        // Apply top and left for positioning instead of transform
+        planet.style.top = `${yPosition}px`;
+        planet.style.left = `${xOffset}px`;
 
-        // Redirect on click
+        if (Math.random() < 0.5) {
+            planet.classList.add("has-ring");
+        }
+
+        planet.classList.add("animate-float");
+
         planet.addEventListener("click", () => {
             window.location.href = planet.getAttribute("data-link");
         });
     });
 
-    // Update positions on resize to keep planets within bounds
+    function generateStars() {
+        const scrollableHeight = document.body.scrollHeight;
+        const starCount = Math.ceil(scrollableHeight / window.innerHeight) * 150;
+        const maxStarSize = 3;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+
+            const starSize = Math.random() * maxStarSize + 1;
+            const xPos = Math.random() * window.innerWidth;
+            const yPos = Math.random() * scrollableHeight;
+
+            star.style.width = `${starSize}px`;
+            star.style.height = `${starSize}px`;
+            star.style.left = `${xPos}px`;
+            star.style.top = `${yPos}px`;
+
+            spaceBackground.appendChild(star);
+        }
+    }
+
+    generateStars();
+
     window.addEventListener("resize", () => {
         planets.forEach((planet, index) => {
-            const randomSize = parseInt(planet.style.width); // Maintain original random size on resize
+            const randomSize = parseInt(planet.style.width);
             const maxXOffset = window.innerWidth - randomSize;
             const xOffset = Math.random() * maxXOffset;
-            planet.style.transform = `translate(${xOffset}px, ${index * rowGap}px)`;
+            planet.style.left = `${xOffset}px`;
+            planet.style.top = `${index * rowGap}px`;
         });
+
+        spaceBackground.innerHTML = "";
+        generateStars();
     });
 });
