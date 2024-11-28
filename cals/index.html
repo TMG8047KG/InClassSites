@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Calculator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container">
+        <input id="num" name="num" class="input" type="number" placeholder="0">
+        <div class="keyboard">
+            <div class="numbers">
+                <div>
+                    <button onclick="one()" class="button" id="1">1</button>
+                    <button onclick="two()" class="button" id="2">2</button>
+                    <button onclick="three()" class="button" id="3">3</button>
+                </div>
+                <div>
+                    <button onclick="four()" class="button" id="4">4</button>
+                    <button onclick="five()" class="button" id="5">5</button>
+                    <button onclick="six()" class="button" id="6">6</button>
+                </div>
+                <div>
+                    <button onclick="seven()" class="button" id="7">7</button>
+                    <button onclick="eight()" class="button" id="8">8</button>
+                    <button onclick="nine()" class="button" id="9">9</button>
+                </div>
+                <div>
+                    <button onclick="zero()" class="button" id="0">0</button>   
+                    <button onclick="deleteFromExistence()" class="button">CL</button>     
+                    <button onclick="equal()" class="equal" id="equals">=</button>
+                </div>
+            </div>
+            <div class="actions">
+                <button onclick="plus()" class="action_button" id="plus">+</button>
+                <button onclick="minus()" class="action_button" id="minus">-</button>
+                <button onclick="multi()" class="action_button" id="multi">*</button>
+                <button onclick="divide()" class="action_button" id="divide">/</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
