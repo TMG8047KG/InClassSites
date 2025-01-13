@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const xOffset = Math.random() * maxXOffset;
 
         // Apply top and left for positioning instead of transform
+        planet.style.position = "absolute"; // Ensure absolute positioning
         planet.style.top = `${yPosition}px`;
         planet.style.left = `${xOffset}px`;
 
@@ -39,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         planet.classList.add("animate-float");
 
         planet.addEventListener("click", () => {
-            window.location.href = planet.getAttribute("data-link");
+            const planetLink = planet.getAttribute("data-link");
+            if (planetLink) {
+                window.location.href = planetLink;
+            }
         });
     });
 

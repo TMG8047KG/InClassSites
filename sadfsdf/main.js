@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('btnClick').addEventListener('click', function () {
         alert('Аз се появявам при единично кликване.');
     });
@@ -52,4 +51,3 @@ document.addEventListener('DOMContentLoaded', function () {
         counter++;
         alert('Броячът е: ' + counter);
     });
-});
